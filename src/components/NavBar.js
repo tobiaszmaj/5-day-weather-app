@@ -5,7 +5,6 @@ import {
     Button,
     Divider,
     Drawer,
-    Grid,
     Toolbar,
     Typography
 } from "@material-ui/core";
@@ -28,7 +27,8 @@ const useStyles = makeStyles(theme => ({
     },
     appBar: {
         background: "transparent",
-        boxShadow: "none"
+        boxShadow: "none",
+        position: "sticky"
     },
     appLogo: {
         width: "160px"
@@ -61,7 +61,6 @@ const TemporaryDrawer = () => {
             role="presentation"
             onClick={toggleDrawer(side, false)}
             onKeyDown={toggleDrawer(side, false)}
-            data-testid="side-drawer"
         >
             <img src={about} className={classes.aboutImg} alt="about" />
             <Typography className={classes.aboutText} component="div" gutterBottom>
@@ -150,7 +149,6 @@ const TemporaryDrawer = () => {
                 anchor="right"
                 open={state.right}
                 onClose={toggleDrawer("right", false)}
-                data-testid="drawer"
             >
                 {sideList("right")}
             </Drawer>
@@ -164,14 +162,9 @@ export default function NavBar() {
     return (
         <div className={classes.root}>
             <AppBar className={classes.appBar}>
-                <Toolbar>
-                    <img
-                        src={logo}
-                        className={classes.appLogo}
-                        alt="logo"
-                        data-testid="app-logo"
-                    />
-                    <Grid justify="space-between" container></Grid>
+                <Toolbar variant="dense">
+                    <img src={logo} className={classes.appLogo} alt="logo" />
+                    <div style={{ flex: "1 1 auto" }}></div>
                     <TemporaryDrawer />
                     <Button className="github-btn">
                         <a
