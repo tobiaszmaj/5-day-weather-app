@@ -20,7 +20,7 @@ import {
   ListItemText,
   Toolbar,
   Tooltip,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import Search from "@material-ui/icons/Search";
 
@@ -32,74 +32,74 @@ import * as weatherIcons from "./icons";
 import * as recommendations from "./recommendations";
 import useDebounce from "./use-debounce";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexiGrow: 1,
-    color: "black",
+    color: "black"
   },
   appBar: {
     background: "transparent",
-    boxShadow: "none",
+    boxShadow: "none"
   },
   appLogo: {
-    width: "160px",
+    width: "160px"
   },
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.secondary
   },
   layout: {
-    marginTop: "20px",
+    marginTop: "20px"
   },
   card: {
     minWidth: 600,
-    minHeight: 600,
+    minHeight: 600
   },
   wi: {
-    color: "#673ab7",
+    color: "#673ab7"
   },
   atmospheric: {
     fontSize: "28px",
-    padding: "5px",
+    padding: "5px"
   },
   recommendation: {
     fontFamily: "Montserrat, sans-serif",
     padding: "20px 0px 10px 0px",
     fontSize: "26px",
-    textAlign: "center",
+    textAlign: "center"
   },
   buttons: {
-    color: "black",
+    color: "black"
   },
   list: {
-    width: 400,
+    width: 400
   },
   fullList: {
-    width: "auto",
+    width: "auto"
   },
   aboutImg: {
     padding: "30px 150px 0px 150px",
-    width: "100px",
+    width: "100px"
   },
   aboutText: {
     fontFamily: "Montserrat",
-    padding: "30px",
+    padding: "30px"
   },
   container: {
     display: "flex",
-    flexWrap: "wrap",
+    flexWrap: "wrap"
   },
   search: {
-    marginTop: "100px",
+    marginTop: "100px"
   },
   error: {
     color: "red",
-    padding: "10px",
-  },
+    padding: "10px"
+  }
 }));
 
-const WeatherSearch = (props) => {
+const WeatherSearch = props => {
   const classes = useStyles();
   const [searchTerm, setSearchTerm] = useState("");
   let [isSearching, setSearching] = useState(false);
@@ -123,7 +123,7 @@ const WeatherSearch = (props) => {
               id="search-city"
               error={hasError}
               placeholder="Enter city name"
-              onChange={(e) => {
+              onChange={e => {
                 setSearching((isSearching = true));
                 setSearchTerm(e.target.value);
               }}
@@ -180,10 +180,10 @@ const NavBar = () => {
 const TemporaryDrawer = () => {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    right: false,
+    right: false
   });
 
-  const toggleDrawer = (side, open) => (event) => {
+  const toggleDrawer = (side, open) => event => {
     if (
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
@@ -194,7 +194,7 @@ const TemporaryDrawer = () => {
     setState({ ...state, [side]: open });
   };
 
-  const sideList = (side) => (
+  const sideList = side => (
     <div
       className={classes.list}
       role="presentation"
@@ -215,7 +215,9 @@ const TemporaryDrawer = () => {
         >
           @tobiaszmaj
         </a>
-        <p>Search functionality now works.</p>
+        <p>
+          Search functionality now works.
+        </p>
       </Typography>
       <Divider variant="middle" />
       <Typography className={classes.aboutText} component="div" gutterBottom>
@@ -292,7 +294,7 @@ const TemporaryDrawer = () => {
   );
 };
 
-const AppLayout = (props) => {
+const AppLayout = props => {
   const classes = useStyles();
 
   return (
@@ -311,7 +313,7 @@ const AppLayout = (props) => {
   );
 };
 
-const WeatherCardSubheader = (props) => {
+const WeatherCardSubheader = props => {
   const date = dayjs().isValid(props.currentWeather.date)
     ? props.currentWeather.date
     : "";
@@ -323,14 +325,14 @@ const WeatherCardSubheader = (props) => {
     <>
       {dayjs(date).format("dddd")}, {dayjs(date).format("h:mm")}{" "}
       {dayjs(date).format("A")},{" "}
-      {description.replace(/\w\S*/g, (txt) => {
+      {description.replace(/\w\S*/g, txt => {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
       })}
     </>
   );
 };
 
-const Forecast = (props) => {
+const Forecast = props => {
   const classes = useStyles();
   const prefix = "wi wi-";
   const result = props.forecast.map((item, index) => {
@@ -342,7 +344,7 @@ const Forecast = (props) => {
           primary={dayjs(item.dt_txt).format("dddd")}
           style={{ flex: "1 1 0%", textAlign: "left" }}
         ></ListItemText>
-        <IconButton edge="start" aria-label="forecast icon">
+        <IconButton disabled={true} aria-label="forecast icon">
           <span
             className={`${classes.wi} ${icon}`}
             style={{ fontSize: "24px" }}
@@ -367,7 +369,7 @@ const Forecast = (props) => {
   );
 };
 
-const WeatherCard = (props) => {
+const WeatherCard = props => {
   const classes = useStyles();
   const humidity = "wi wi-humidity";
   const strongWind = "wi wi-strong-wind";
@@ -425,14 +427,14 @@ const WeatherCard = (props) => {
   );
 };
 
-class Weather extends React.Component {
-  render() {
-    const { city, currentWeather, forecast, setCity, error } = this.props;
+function Weather(props) {
+  if (props.currentWeather && props.forecast) {
+    const { city, currentWeather, forecast, setCity, error } = props;
     const prefix = "wi wi-";
     const icon =
-      prefix + weatherIcons.default[this.props.currentWeather.icon_id].icon;
+      prefix + weatherIcons.default[props.currentWeather.icon_id].icon;
     const recommendation =
-      recommendations.default[this.props.currentWeather.icon_id].recommendation;
+      recommendations.default[props.currentWeather.icon_id].recommendation;
 
     return (
       <div>
