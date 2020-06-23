@@ -22,8 +22,8 @@ const useStyles = makeStyles(theme => ({
         color: "black"
     },
     card: {
-        minWidth: 600,
-        minHeight: 600
+        maxWidth: 600,
+        minHeight: 600,
     },
     container: {
         display: "flex",
