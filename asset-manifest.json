@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.js": "/5-day-weather-app/static/js/main.11449aab.chunk.js",
+    "main.js.map": "/5-day-weather-app/static/js/main.11449aab.chunk.js.map",
+    "runtime-main.js": "/5-day-weather-app/static/js/runtime-main.fe2b1c9b.js",
+    "runtime-main.js.map": "/5-day-weather-app/static/js/runtime-main.fe2b1c9b.js.map",
+    "static/js/2.9fa25959.chunk.js": "/5-day-weather-app/static/js/2.9fa25959.chunk.js",
+    "static/js/2.9fa25959.chunk.js.map": "/5-day-weather-app/static/js/2.9fa25959.chunk.js.map",
+    "index.html": "/5-day-weather-app/index.html",
+    "precache-manifest.aaba1410185d622f2511bf9b91f64be5.js": "/5-day-weather-app/precache-manifest.aaba1410185d622f2511bf9b91f64be5.js",
+    "service-worker.js": "/5-day-weather-app/service-worker.js",
+    "static/js/2.9fa25959.chunk.js.LICENSE.txt": "/5-day-weather-app/static/js/2.9fa25959.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/5-day-weather-app/static/media/logo.ed1e6c52.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fe2b1c9b.js",
+    "static/js/2.9fa25959.chunk.js",
+    "static/js/main.11449aab.chunk.js"
+  ]
+}
