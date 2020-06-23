@@ -1,3 +1,11 @@
-## react-weather
+# 5-day Weather App
 
-A simple React weather app that displays weather information from the OpenWeatherMap API.
+### See [DEMO](https://tobiaszmaj.github.io/5-day-weather-app)
+
+![Preview](preview.jpg)
+
+## What I used?
+* [React](https://reactjs.org/)
+* [Material-UI](https://material-ui.com/)
+* [OpenWeatherMap API](https://openweathermap.org/api)
+* [Erik Flowers' weather icons](https://erikflowers.github.io/weather-icons/)
